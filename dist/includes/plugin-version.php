@@ -24,7 +24,7 @@
  * ```
  *
  * @package    WPConstr_Plugin_Version
- * @copyright  © 2025 by WPConstructor
+ * @copyright  (c) 2026 by WPConstructor
  * @author     WPConstructor <https://wpconstructor.com/contact>
  * @license    MIT (https://opensource.org/licenses/MIT)
  * @link       https://wpconstructor.com/code/wpconstr-plugin-version
@@ -92,22 +92,25 @@ if ( file_exists( $main_file ) ) {
 				$plugin_name = trim( $matches[1] );
 			}
 			if ( true === $wp_requires_ok ) {
-				$msg = $plugin_name . ' requires PHP ' . $php_requires . ' or higher.';
+				$msg_template = '<strong>{pluginName}</strong> plugin could not be activated. It requires <strong>PHP {phpVersion} or higher</strong>. Please update your environment to use this plugin.';
 			} elseif ( true === $php_requires_ok ) {
-				$msg = $plugin_name . ' requires WordPress ' . $wp_requires . ' or higher.';
+				$msg_template = '<strong>{pluginName}</strong> plugin could not be activated. It requires <strong>WordPress {wordPressVersion} or higher</strong>. Please update your environment to use this plugin.';
 			} else {
-				$msg = $plugin_name . ' requires PHP ' . $php_requires . ' or higher and WordPress ' . $wp_requires . ' or higher.';
+				$msg_template = '<strong>{pluginName}</strong> plugin could not be activated. It requires <strong>PHP {phpVersion} or higher</strong> and <strong>WordPress {wordPressVersion} or higher</strong>. Please update your environment to use this plugin.';
 			}
-			if ( is_admin() && current_user_can( 'install_plugins' ) ) {
-				add_action(
-					'admin_notices',
-					function () {
+			$msg = str_replace( '{pluginName}', $plugin_name, $msg_template );
+			$msg = str_replace( '{phpVersion}', $php_requires, $msg );
+			$msg = str_replace( '{wordPressVersion}', $wp_requires, $msg );
+			add_action(
+				'admin_notices',
+				function () use ( $msg ) {
+					if ( is_admin() && current_user_can( 'install_plugins' ) ) {
 						echo '<div class="notice notice-error"><p>';
-						echo esc_html( $msg );
+						echo wp_kses_post( $msg );
 						echo '</p></div>';
 					}
-				);
-			}
+				}
+			);
 			return false;
 		}
 	} elseif ( defined( 'WP_DEBUG' ) && WP_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
