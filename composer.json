@@ -1,0 +1,13 @@
+{
+    "name": "wpconstructor/plugin-version",
+    "description": "Gets the version of a WordPress plugin from its main file and checks if PHP version and WP version requirements are met.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "WPConstructor",
+            "homepage": "https://wpconstructor.com/contact",
+            "role": "Developer"
+        }
+    ]
+}
