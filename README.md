@@ -34,7 +34,7 @@ Add the following code to your main plugin file:
 
 ```php
 $main_file      = __FILE__;
-$plugin_version = require __DIR__ . '/vendor/wpconstructor/plugin-version/dist/includes/plugin-version.php';
+$plugin_version = require __DIR__ . '/vendor/wpconstructor/plugin-version/src/includes/plugin-version.php';
 
 // False when PHP or WordPress requirements are not satisfied.
 if ( false === $plugin_version ) {
