@@ -13,7 +13,7 @@
  * Usage:
  * ```php
  * $main_file      = __FILE__;
- * $plugin_version = include 'vendor/wpconstr/plugin-version/plugin-version.php';
+ * $plugin_version = require 'vendor/wpconstr/plugin-version/plugin-version.php';
  *
  * // Check for PHP or WordPress version requirement.
  * if ( false === $plugin_version ) {
@@ -23,7 +23,7 @@
  * define( 'MY_PLUGIN_VERSION', $plugin_version );
  * ```
  *
- * @package    WPConstr_Plugin_Version
+ * @package    WPConstructor_Plugin_Version
  * @copyright  (c) 2026 by WPConstructor
  * @author     WPConstructor <https://wpconstructor.com/contact>
  * @license    MIT (https://opensource.org/licenses/MIT)
