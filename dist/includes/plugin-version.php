@@ -13,7 +13,7 @@
  * Usage:
  * ```php
  * $main_file      = __FILE__;
- * $plugin_version = require __DIR__ . '/vendor/wpconstr/plugin-version/plugin-version.php';
+ * $plugin_version = require __DIR__ . '/vendor/wpconstructor/plugin-version/dist/includes/plugin-version.php';
  *
  * // Check for PHP or WordPress version requirement.
  * if ( false === $plugin_version ) {
