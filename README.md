@@ -24,7 +24,7 @@ Install via Composer:
 composer require wpconstructor/plugin-version
 ```
 
-Include it in your plugin as follows:
+Or download from GitHub as a ZIP and include it in your plugin manually.
 
 ---
 
