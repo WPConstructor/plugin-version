@@ -39,6 +39,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 $use_default = false;
 
+// Checks if $main_file has been set valid.
+
 if ( ! isset( $main_file ) ) {
 	$use_default = true;
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
@@ -63,14 +65,19 @@ $plugin_version = null;
 
 if ( file_exists( $main_file ) ) {
 	if ( is_readable( $main_file ) ) {
-		// Regex for: Version: X.Y.Z.
+
+		// Gets contents of main plugin file.
+		$plugin_file_content = file_get_contents( $main_file, false, null, 0, 4096 ); //phpcs:ignore
+
+		// Define Regex template to just replace the plugin tag name.
 		$regex_template = '/^\s*\*?\s*{TAG}:\s*(.+)$/mi';
 
-		//phpcs:ignore
-		$plugin_file_content = file_get_contents( $main_file, false, null, 0, 4096 );
+		// Extracts the plugin version.
 		if ( preg_match( str_replace( '{TAG}', 'Version', $regex_template ), $plugin_file_content, $matches ) ) {
 			$plugin_version = trim( $matches[1] );
 		}
+
+		// Extracts and checks required PHP version.
 		$php_requires_ok = true;
 		if ( preg_match( str_replace( '{TAG}', 'Requires PHP', $regex_template ), $plugin_file_content, $matches ) ) {
 			$php_requires = trim( $matches[1] );
@@ -78,6 +85,8 @@ if ( file_exists( $main_file ) ) {
 				$php_requires_ok = false;
 			}
 		}
+
+		// Extract and checks the WordPress required version.
 		$wp_requires_ok = true;
 		if ( preg_match( str_replace( '{TAG}', 'Requires\s*at\s*least', $regex_template ), $plugin_file_content, $matches ) ) {
 			global $wp_version;
@@ -86,11 +95,17 @@ if ( file_exists( $main_file ) ) {
 				$wp_requires_ok = false;
 			}
 		}
+
+		// Handle not met requirements (PHP or WordPress or both).
 		if ( false === $wp_requires_ok || false === $php_requires_ok ) {
+
+			// Extract plugin name to add to message later.
 			$plugin_name = 'Unknown Plugin Name';
 			if ( preg_match( str_replace( '{TAG}', 'Plugin\s*Name', $regex_template ), $plugin_file_content, $matches ) ) {
 				$plugin_name = trim( $matches[1] );
 			}
+
+			// Defines the message temapltes.
 			if ( true === $wp_requires_ok ) {
 				$msg_template = '<strong>{pluginName}</strong> plugin could not be activated. It requires <strong>PHP {phpVersion} or higher</strong>. Please update your environment to use this plugin.';
 			} elseif ( true === $php_requires_ok ) {
@@ -98,12 +113,18 @@ if ( file_exists( $main_file ) ) {
 			} else {
 				$msg_template = '<strong>{pluginName}</strong> plugin could not be activated. It requires <strong>PHP {phpVersion} or higher</strong> and <strong>WordPress {wordPressVersion} or higher</strong>. Please update your environment to use this plugin.';
 			}
+
+			// Replace placeholders in template.
 			$msg = str_replace( '{pluginName}', $plugin_name, $msg_template );
 			$msg = str_replace( '{phpVersion}', $php_requires, $msg );
 			$msg = str_replace( '{wordPressVersion}', $wp_requires, $msg );
+
+			// Add the admin notice.
 			add_action(
 				'admin_notices',
 				function () use ( $msg ) {
+
+					// Run only in admin for administrators.
 					if ( is_admin() && current_user_can( 'install_plugins' ) ) {
 						echo '<div class="notice notice-error"><p>';
 						echo wp_kses_post( $msg );
@@ -114,15 +135,19 @@ if ( file_exists( $main_file ) ) {
 			return false;
 		}
 	} elseif ( defined( 'WP_DEBUG' ) && WP_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
+		// Error: Main file not readable.
+
 		//phpcs:ignore
 		error_log( 'WPConstructor Plugin Version: The main file "' . $main_file . '" is not readable.' );
 	}
 } elseif ( defined( 'WP_DEBUG' ) && WP_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
+	// Error: Main file does not exist.
+
 	//phpcs:ignore
 	error_log( 'WPConstructor Plugin Version: The main file "' . $main_file . '" does not exist.' );
 }
 
-// Fallback if the version is not found.
+// Fallback if the plugin version is not found.
 if ( ! $plugin_version ) {
 	$plugin_version = '1.0.0'; // Default version.
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG && defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
