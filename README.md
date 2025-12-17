@@ -36,7 +36,7 @@ Add the following code to your main plugin file:
 $main_file      = __FILE__;
 $plugin_version = require __DIR__ . '/vendor/wpconstructor/plugin-version/dist/includes/plugin-version.php';
 
-// Check for PHP or WordPress requirement.
+// False when PHP or WordPress requirements are not satisfied.
 if ( false === $plugin_version ) {
 	return; // Stop execution if requirements are not met.
 }
