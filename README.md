@@ -36,12 +36,9 @@ Add the following code to your main plugin file:
 ```php
 $main_file = __FILE__;
 
-// Optional: always run plugin even if PHP or WP requirements are not met.
-define( 'WPCONSTR_PLUGIN_VERSION_ALWAYS_RUN', true );
-
 $plugin_version = require __DIR__ . '/vendor/wpconstructor/plugin-version/src/includes/plugin-version.php';
 
-// If requirements are not met and ALWAYS_RUN is false, stop execution.
+// If requirements are not met and the constant WPCONSTR_PLUGIN_VERSION_ALWAYS_RUN is not set or false, stop execution.
 if ( false === $plugin_version ) {
     return; // Stop execution if requirements are not met.
 }
