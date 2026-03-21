@@ -22,14 +22,14 @@
  * // Use the plugin version, e.g., define a constant.
  * define( 'MY_PLUGIN_VERSION', $plugin_version );
  * ```
- * Set WPCONSTR-PLUGIN-VERSION-ALWAYS-RUN constant to true in your wp-config.php file to always run even if the versions
+ * Set WPCONSTR_PLUGIN_VERSION_ALWAYS_RUN constant to true in your wp-config.php file to always run even if the versions
  * are not met.
  *
  * @package    WPConstructor\PluginVersion
  * @copyright  2026 by WPConstructor
  * @author     WPConstructor <https://wpconstructor.com/contact>
  * @license    MIT (https://opensource.org/licenses/MIT)
- * @link       https://wpconstructor.com/code/wpconstr-plugin-version
+ * @link       https://wpconstructor.com/codes/wpconstructor-plugin-version
  * @version    1.0.0 
  * @since      1.0.0 
  */
