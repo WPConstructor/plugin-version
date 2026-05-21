@@ -59,7 +59,7 @@ If the current PHP or WordPress version does not meet the requirements, an admin
 
 ## License
 
-GPL 3.0 or later. See [LICENSE](https://www.gnu.org/licenses/gpl-3.0.html) for details.
+GPL 3.0 or later. See [LICENSE](LICENSE.md) for details.
 
 ---
 
