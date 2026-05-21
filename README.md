@@ -72,12 +72,12 @@ Version 1.0.3 (May 2026)
 
 Version 1.0.2 (March 2026)
 
-* Removed index.php
+* Removed `index.php`
 
 Version 1.0.1 (March 2026)
 
 * Corrected constant typo.
-* Updated README.md
+* Updated `README.md`
 
 Version 1.0.0 (March 2026)
 
