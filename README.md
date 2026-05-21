@@ -65,19 +65,23 @@ GPL 3.0 or later. See [LICENSE](https://www.gnu.org/licenses/gpl-3.0.html) for d
 
 ## Changelog
 
-Version 1.0.3
+Version 1.0.3 (May 2026)
 
 * Changed license from MIT to GPL 3.0 or later.
 * Changed composer.json description.
 
-Version 1.0.2
+Version 1.0.2 (March 2026)
 
 * Removed index.php
 
-Version 1.0.1
+Version 1.0.1 (March 2026)
 
 * Corrected constant typo.
 * Updated README.md
+
+Version 1.0.0 (March 2026)
+
+* Initial release.
 
 ---
 
