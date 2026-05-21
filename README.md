@@ -68,7 +68,7 @@ GPL 3.0 or later. See [LICENSE](LICENSE.md) for details.
 Version 1.0.3 (May 2026)
 
 * Changed license from MIT to GPL 3.0 or later.
-* Changed composer.json description.
+* Changed `composer.json` description.
 
 Version 1.0.2 (March 2026)
 
