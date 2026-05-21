@@ -63,6 +63,24 @@ GPL 3.0 or later. See [LICENSE](https://www.gnu.org/licenses/gpl-3.0.html) for d
 
 ---
 
+## Changelog
+
+Version 1.0.3
+
+* Changed license from MIT to GPL 3.0 or later.
+* Changed composer.json description.
+
+Version 1.0.2
+
+* Removed index.php
+
+Version 1.0.1
+
+* Corrected constant typo.
+* Updated README.md
+
+---
+
 ## Author
 
 WPConstructor – [WPConstructor.com](https://wpconstructor.com/)
