@@ -38,7 +38,7 @@ $main_file = __FILE__;
 
 $plugin_version = require __DIR__ . '/vendor/wpconstructor/plugin-version/src/includes/plugin-version.php';
 
-// If requirements are not met and the constant WPCONSTR_PLUGIN_VERSION_ALWAYS_RUN is not set or false, stop execution.
+// If requirements are not met and the constant WPCN_PLUGIN_VERSION_ALWAYS_RUN is not set or false, stop execution.
 if ( false === $plugin_version ) {
     return; // Stop execution if requirements are not met.
 }
@@ -47,22 +47,22 @@ if ( false === $plugin_version ) {
 define( 'MY_PLUGIN_VERSION', $plugin_version );
 ```
 
-> Setting `WPCONSTR_PLUGIN_VERSION_ALWAYS_RUN` to `true` will bypass PHP and WordPress version checks, ensuring the plugin always loads.
+> Setting `WPCN_PLUGIN_VERSION_ALWAYS_RUN` to `true` will bypass PHP and WordPress version checks, ensuring the plugin always loads.
 
 ---
 
 ## Admin Notice
 
-If the current PHP or WordPress version does not meet the requirements, an admin notice is displayed **only for users with the `install_plugins` capability**, unless `WPCONSTR_PLUGIN_VERSION_ALWAYS_RUN` is set to `true`.
+If the current PHP or WordPress version does not meet the requirements, an admin notice is displayed **only for users with the `install_plugins` capability**, unless `WPCN_PLUGIN_VERSION_ALWAYS_RUN` is set to `true`.
 
 ---
 
 ## License
 
-MIT License. See [LICENSE](https://opensource.org/licenses/MIT) for details.
+GPL 3.0 or later. See [LICENSE](https://www.gnu.org/licenses/gpl-3.0.html) for details.
 
 ---
 
 ## Author
 
-WPConstructor – [https://wpconstructor.com/contact](https://wpconstructor.com/contact)
+WPConstructor – [WPConstructor.com](https://wpconstructor.com/)

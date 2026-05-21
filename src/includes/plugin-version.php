@@ -22,16 +22,14 @@
  * // Use the plugin version, e.g., define a constant.
  * define( 'MY_PLUGIN_VERSION', $plugin_version );
  * ```
- * Set WPCONSTR_PLUGIN_VERSION_ALWAYS_RUN constant to true in your wp-config.php file to always run even if the versions
+ * Set WPCN_PLUGIN_VERSION_ALWAYS_RUN constant to true in your wp-config.php file to always run even if the versions
  * are not met.
  *
  * @package    WPConstructor\PluginVersion
  * @copyright  2026 by WPConstructor
  * @author     WPConstructor <https://wpconstructor.com/contact>
- * @license    MIT (https://opensource.org/licenses/MIT)
+ * @license    GPL-3.0-or later (https://www.gnu.org/licenses/gpl-3.0.html)
  * @link       https://wpconstructor.com/codes/wpconstructor-plugin-version
- * @version    1.0.0 
- * @since      1.0.0 
  */
 
 // If this file is called directly, abort.
@@ -101,7 +99,7 @@ if ( file_exists( $main_file ) ) {
 		if ( false === $wp_requires_ok || false === $php_requires_ok ) {
 
 			// Only if constant is not defined or not true.
-			if ( ! ( defined( 'WPCONSTR_PLUGIN_VERSION_ALWAYS_RUN' ) && WPCONSTR_PLUGIN_VERSION_ALWAYS_RUN === true ) ) {
+			if ( ! ( defined( 'WPCN_PLUGIN_VERSION_ALWAYS_RUN' ) && WPCN_PLUGIN_VERSION_ALWAYS_RUN === true ) ) {
 
 				// Extract plugin name to add to message later.
 				$plugin_name = 'Unknown Plugin Name';
