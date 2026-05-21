@@ -1,6 +1,6 @@
 {
     "name": "wpconstructor/plugin-version",
-    "description": "Gets the version of a WordPress plugin from its main file and checks if PHP version and WordPress version requirements are met.",
+    "description": "Gets the plugin version from the main file and verifies that the required PHP and WordPress versions are satisfied. If the requirements are not met, it returns false and triggers an admin notice.",
     "type": "library",
     "license": "GPL-3.0-or-later",
     "authors": [
